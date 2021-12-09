@@ -1,0 +1,42 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Detalle Emplerado
+{% endblock titulo %}
+
+
+{% block content %}
+    <div class="grid-container">
+    
+        <h1>Detalle de Empleado {{ empleados.full_name }}</h1>
+    
+      
+
+        <table>
+            <thead>
+                <tr>
+                    <th width="200">ID</th>
+                    <th>Nombres</th>
+                    <th width="150">Apellidos</th>
+                    <th width="150">Departamentos</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+              
+                <tr>
+                    <td>{{ empleados.id }}</td>
+                    <td>{{ empleados.first_name }}</td>
+                    <td>{{ empleados.last_name }}</td>
+                    <td>{{ empleados.departamento_id.short_name }}</td>
+                
+                </tr>
+           
+            </tbody>
+        </table>
+    
+    </div>
+{% endblock content %}
+    
+

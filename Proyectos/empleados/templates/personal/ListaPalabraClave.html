@@ -1,0 +1,16 @@
+<h1>Buscador por palabra clave</h1>
+
+<form method="GET">
+    {% csrf_token %}
+    <p>Buscador</p>
+    <input type="text" placeholder="Ingrese texto" id="buscador" name="buscador">
+    <button type="submit" >Buscar</button>
+</form>
+
+<ul>
+    {% for e in object_list %}
+    <li>
+        {{ e }}
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,21 @@
+<h1>Registar nuevo departamento</h1>
+
+<form action="" method="post"> {% csrf_token %}
+    <h3>Datos Empleados</h3>
+    <p>
+        {{form.nombre}}
+    </p>
+    <p>
+        {{form.apellidos}}
+    </p>
+
+    <h3>Datos Departamentos</h3>
+    <p>
+        {{form.departamento}}
+    </p>
+    <p>
+        {{form.departamentoNombreCorto}}
+    </p>
+    
+    <button type="submit">Guardar</button>
+</form>

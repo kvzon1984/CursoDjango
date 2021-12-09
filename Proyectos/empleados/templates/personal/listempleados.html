@@ -1,0 +1,111 @@
+{% extends '../base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    Lista Empleado
+{% endblock titulo %}
+    
+
+{% block content %}
+
+    <div class="grid-container">
+
+        <div class="grid-x">
+            <h1>
+                Listas de todos los empleados
+            </h1>
+           
+            <form class="cell grid-x grid-margin-x" method="get"> {% csrf_token %}
+                <div class="cell large-7">
+                    <input id="buscador" name="buscador" type="text" placeholder="Buscar Empleados">
+                </div>
+                <div class="cell large-2">
+                    <button type="submit" class="submit warning button">Buscar</button>
+                </div>
+            </form>
+            
+           
+            <div class="cell">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="200">ID</th>
+                            <th>Nombres</th>
+                            <th width="150">Apellidos</th>
+                            <th width="150">Departamentos</th>
+                            <th width="150">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for e in object_list %}
+                        <tr>
+                            <td>{{ e.id }}</td>
+                            <td>{{ e.first_name }}</td>
+                            <td>{{ e.last_name }}</td>
+                            <td>{{ e.departamento_id.short_name }}</td>
+                            <td class="grid-x grid-margin-x ">
+                                <a class="button primary cell" href="{% url 'personal_all:detalleEmpleado' e.id %}">Ver</a>
+                                <a class="button alert cell" href="#">Eliminar</a>
+                            </td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cell">
+
+                <!-- P A G I N A C I O N -->
+                
+                {% if is_paginated %}
+                    <nav aria-label="Pagination " style="text-align: center;">
+                        <ul class="pagination">
+                            
+                            {% if page_obj.has_previous %}
+                                <li class="pagination-previous disabled">
+                                    <a href="?page={{ page_obj.previous_page_number }}">Atras</a>    
+                                </li>
+                            {% endif %}
+                            
+                            {% for pagina in paginator.page_range %}
+                            
+                                {% ifequal pagina page_obj.number %} 
+                                    <li class="current"><span class="show-for-sr">You're on page</span> {{ pagina }}</li>
+
+                                {% else %}
+
+                                    <li><a href="?page={{ pagina }}" aria-label="Page 2">{{ pagina }}</a></li>
+                                
+                                {% endifequal %}
+                                    
+                                
+                            {% endfor %}
+
+                            
+                            {% if page_obj.has_next %}
+                                <li class="pagination-next">
+                                    <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+                                </li>
+                            {% endif %}
+                                
+                    
+                          
+                        </ul>
+                    </nav>
+                {% endif %}
+
+                <!-- F I N    P A G I N A C I O N -->
+                    
+                
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+    
+
+
+

@@ -1,0 +1,21 @@
+<div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li>
+                <a href="{% url 'personal_all:inicio' %}">Empleados</a>
+            </li>
+            <li>
+                <a href="{% url 'personal_all:listarEmpleado' %}">Listar</a>
+            </li>
+            <li><a href="{% url 'departamento:listaDepartamento' %}">Departamentos</a></li>
+            <li><a href="#">Administrar</a></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="menu">
+            <li><input type="search" placeholder="Buscar Empleado"></li>
+            <li><button type="button" class="button">Registrar Nuevo</button></li>
+        </ul>
+    </div>
+</div>
+

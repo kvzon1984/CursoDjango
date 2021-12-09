@@ -1,0 +1,45 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Listado area empleado
+{% endblock titulo %}
+    
+
+{% block content %}
+    <div class="grid-container">
+        <div class="grid-x">
+            <h1 class="cell">Lista de empleados por area</h1> 
+
+            <table class="cell">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                    </tr>
+                </thead>
+                {% for e in empleados %}
+                   
+                    <tbody>
+                        <th>
+                            <td>
+                                e.id
+                            </td>
+                        </th>
+                    </tbody>
+                {% endfor %}
+            </table>
+            <ul class="cell">
+             
+                <li>
+                    {{ e }}
+                </li>
+              
+            </ul>
+        </div>
+   
+
+    </div>
+{% endblock content %}
+    
